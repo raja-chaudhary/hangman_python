@@ -28,7 +28,7 @@ game_active = True
 while game_active:
 
     # taking input from the user
-    guess = input("Guess a letter: ").lower()
+    guess = input("\nGuess a letter: ").lower()
 
 
 # checking guessed letter
@@ -42,6 +42,8 @@ while game_active:
                 # replacing '_' with the guessed letter
                 display[position] = letter
         if guess not in chosen_word:
+            print(
+                f'The letter {guess} is not in the word. You lose a life!')
             lives -= 1                      # reduce life by 1 if guess is incorrect
             print(stages[lives])            # printing the hanged man
         if lives == 0:
@@ -51,6 +53,7 @@ while game_active:
         if '_' not in display:
             print('You Won.....')
             game_active = False
-        print(display)
+        print(' '.join(display))
     else:
         print(f'You have already guessed this letter {guess}')
+        print(' '.join(display))
